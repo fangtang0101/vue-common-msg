@@ -1,34 +1,42 @@
 <template>
     <div id="app">
         <img src="./assets/logo.png">
-        
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="用户管理" name="first">
-              <HelloWorld msg="Welcome to Your Vue.js App" />
-            </el-tab-pane>
-            <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-            <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-            <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
-        </el-tabs>
+        App.vue中接受事件数据{{acceptData}}
+        <HelloWorld msg="comp1" />
+        <HelloWorld2 msg="comp2" />
     </div>
 </template>
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld2 from './components/HelloWorld2.vue'
+
+// import 'commonMsg';
+import {commonMsg} from './commonMsg';
 
 export default {
     name: 'app',
     data() {
         return {
-            activeName: 'second'
+            activeName: 'second',
+            acceptData:{}
         }
     },
     components: {
-        HelloWorld
+        HelloWorld,
+        HelloWorld2
     },
     methods: {
         handleClick() {
             // console.log(tab, event);
         }
+    },
+    mounted(){
+        let self = this;
+        console.log('mounted ...app.vue');
+           commonMsg.registerEvents('abc','efg',(dataBack)=>{
+            self.acceptData = dataBack;
+            console.log('i am back data is',dataBack);
+        })
     }
 }
 </script>

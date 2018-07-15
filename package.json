@@ -26,7 +26,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console":"on"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

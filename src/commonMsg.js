@@ -1,6 +1,5 @@
 const commonMsg={
 	data:{}, // 存储数据   logistic 模块 name age 等每个字段
-	listCallBack:{},
 	registerEvents:(modulName,propetyName,cb)=>{  // 注册监听事件  modulName :模块名字  propeyName：模块中的属性名字 cb：回调事件
 		//1.将 modulName propetyName ,cb 都存起来
 		if(!commonMsg.data[modulName]){
